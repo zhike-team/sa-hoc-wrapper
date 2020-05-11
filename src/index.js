@@ -25,7 +25,7 @@ export const saWrapper = (config = {}) => targetClass => {
     if (sa && sa.trackTimerEnd) {
       let properties;
       if (typeof targetClass.prototype.getTrackTimerProperties === 'function') {
-        properties = targetClass.prototype.getTrackTimerProperties.apply(this);
+        properties = targetClass.prototype.getTrackTimerProperties();
       }
       sa.trackTimerEnd(eventName, properties);
       event.preventDefault();
@@ -60,7 +60,7 @@ export const saWrapper = (config = {}) => targetClass => {
     if (sa && sa.trackTimerEnd) {
       let properties;
       if (typeof targetClass.prototype.getTrackTimerProperties === 'function') {
-        properties = targetClass.prototype.getTrackTimerProperties.apply(this);
+        properties = targetClass.prototype.getTrackTimerProperties();
       }
       sa.trackTimerEnd(eventName, properties);
     } else {

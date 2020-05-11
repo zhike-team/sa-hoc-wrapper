@@ -1,13 +1,13 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/app.js',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'umd',
-    library: 'saWrapper',
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -18,5 +18,14 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+    })
+  ],
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+  },
 }
