@@ -21,11 +21,11 @@ if (sa) {
 // 增加神策时间统计支持
 export const saWrapper = (config = {}) => targetClass => {
   const eventName = config.eventName || TRACK_TIMER_EVENT;
-  const unloadHandler = event => {
+  const unloadHandler = function (event) {
     if (sa && sa.trackTimerEnd) {
       let properties;
       if (typeof targetClass.prototype.getTrackTimerProperties === 'function') {
-        properties = targetClass.prototype.getTrackTimerProperties();
+        properties = targetClass.prototype.getTrackTimerProperties.apply(this);
       }
       sa.trackTimerEnd(eventName, properties);
       event.preventDefault();
@@ -49,7 +49,7 @@ export const saWrapper = (config = {}) => targetClass => {
       console.log('sa.trackTimerStart does not exist');
     }
 
-    window.addEventListener('beforeunload', unloadHandler, false);
+    window.addEventListener('beforeunload', unloadHandler.bind(this), false);
   };
 
   const originComponentWillUnmount = targetClass.prototype.componentWillUnmount;
@@ -60,13 +60,13 @@ export const saWrapper = (config = {}) => targetClass => {
     if (sa && sa.trackTimerEnd) {
       let properties;
       if (typeof targetClass.prototype.getTrackTimerProperties === 'function') {
-        properties = targetClass.prototype.getTrackTimerProperties();
+        properties = targetClass.prototype.getTrackTimerProperties.apply(this);
       }
       sa.trackTimerEnd(eventName, properties);
     } else {
       console.log('sa.trackTimerEnd does not exist');
     }
-    window.removeEventListener('beforeunload', unloadHandler, false);
+    window.removeEventListener('beforeunload', unloadHandler.bind(this), false);
   };
 
   return targetClass;

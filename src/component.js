@@ -5,6 +5,13 @@ import { saWrapper } from './index'
   eventName: 'ti_practice_ielts'
 })
 class MyComponent1 extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      subjectIds: '5,6,7,8'
+    }
+  }
+
   render() {
     return <div>
       子组件1
@@ -18,8 +25,9 @@ class MyComponent1 extends React.Component {
   }
 
   getTrackTimerProperties() {
+    const { subjectIds } = this.state;
     return {
-      subjectIds : '5,6,7,8'
+      subjectIds: '5,6,7,8'
     }
   }
 
@@ -29,6 +37,12 @@ class MyComponent1 extends React.Component {
   eventName: 'ti_practice_ielts'
 })
 class MyComponent2 extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      subjectIds: '5,6,7'
+    }
+  }
   render() {
     return <div>
       子组件2
@@ -36,15 +50,16 @@ class MyComponent2 extends React.Component {
   }
 
   componentDidMount(){
-    debugger
   }
 
   componentWillUnmount(){
   }
 
   getTrackTimerProperties() {
+    // const { subjectIds } = this.state;
+    console.log(global)
     return {
-      subjectIds : '5,6,7'
+      subjectIds: '5,6,7'
     }
   }
 }
