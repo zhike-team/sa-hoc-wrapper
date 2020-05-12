@@ -25,10 +25,18 @@ class extends Component{
 
 ## 开发指南
 ```shell
+ # 开启服务
+ npm start 
+
+ # 拷贝sa参数文件
+ cp sa.js /dist
+
  # 编译打包 
  npm run build
+
  #  修改版本
  npm version major|minor|patch
+ 
  # 发布
  npm publish --access public
 ```

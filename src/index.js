@@ -39,6 +39,7 @@ export const saWrapper = (config = {}) => targetClass => {
   };
 
   const originComponentDidMount = targetClass.prototype.componentDidMount;
+  let unloadHandlerWrap;
   targetClass.prototype.componentDidMount = function cdm(...args) {
     originComponentDidMount.apply(this, args);
 
@@ -48,8 +49,8 @@ export const saWrapper = (config = {}) => targetClass => {
     } else {
       console.log('sa.trackTimerStart does not exist');
     }
-
-    window.addEventListener('beforeunload', unloadHandler.bind(this), false);
+    unloadHandlerWrap = unloadHandler.bind(this)
+    window.addEventListener('beforeunload', unloadHandlerWrap, false);
   };
 
   const originComponentWillUnmount = targetClass.prototype.componentWillUnmount;
@@ -66,7 +67,7 @@ export const saWrapper = (config = {}) => targetClass => {
     } else {
       console.log('sa.trackTimerEnd does not exist');
     }
-    window.removeEventListener('beforeunload', unloadHandler.bind(this), false);
+    window.removeEventListener('beforeunload', unloadHandlerWrap, false);
   };
 
   return targetClass;
