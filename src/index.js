@@ -1,5 +1,9 @@
 const TRACK_TIMER_EVENT = 'track_timer_event';
 
+if (typeof window !== 'undefined') {
+  global.window = {}
+}
+
 if (typeof sa !== 'undefined') {
   if (!sa.trackTimerStart) {
     sa.trackTimerStart = function trackTimerStart() {
@@ -50,9 +54,7 @@ export const saWrapper = (config = {}) => targetClass => {
       console.log('sa.trackTimerStart does not exist');
     }
     unloadHandlerWrap = unloadHandler.bind(this)
-    if (typeof window !== 'undefined') {
-      window.addEventListener('beforeunload', unloadHandlerWrap, false);
-    }
+    window.addEventListener('beforeunload', unloadHandlerWrap, false);
   };
 
   const originComponentWillUnmount = targetClass.prototype.componentWillUnmount;
@@ -69,9 +71,7 @@ export const saWrapper = (config = {}) => targetClass => {
     } else {
       console.log('sa.trackTimerEnd does not exist');
     }
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('beforeunload', unloadHandlerWrap, false);
-    }
+    window.removeEventListener('beforeunload', unloadHandlerWrap, false);
   };
 
   return targetClass;

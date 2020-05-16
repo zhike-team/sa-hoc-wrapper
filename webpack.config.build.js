@@ -7,8 +7,8 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     libraryTarget: 'umd',
     library: 'saWrapper',
+    globalObject: 'this'
   },
-  mode: 'none',
   module: {
     rules: [
       {
