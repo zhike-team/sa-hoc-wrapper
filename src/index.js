@@ -1,6 +1,10 @@
 const TRACK_TIMER_EVENT = 'track_timer_event';
 
-if (sa) {
+if (typeof window === 'undefined') {
+  global.window = {}
+}
+
+if (typeof sa !== 'undefined') {
   if (!sa.trackTimerStart) {
     sa.trackTimerStart = function trackTimerStart() {
       const now = Date.now();
