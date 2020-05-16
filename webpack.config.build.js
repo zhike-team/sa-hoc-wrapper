@@ -8,6 +8,7 @@ module.exports = {
     libraryTarget: 'umd',
     library: 'saWrapper',
   },
+  mode: 'none',
   module: {
     rules: [
       {
