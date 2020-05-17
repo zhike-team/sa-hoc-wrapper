@@ -1,6 +1,6 @@
 {
   "name": "@zhike/sa-hoc-wrapper",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "智课神策业务打点数据包",
   "main": "build/index.js",
   "scripts": {
