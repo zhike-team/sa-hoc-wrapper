@@ -1,7 +1,7 @@
 const TRACK_TIMER_EVENT = 'track_timer_event';
 
 if (typeof window === 'undefined') {
-  window = {}
+  global.window = {}
 }
 
 if (typeof sa !== 'undefined') {
