@@ -42,8 +42,8 @@ class extends Component{
 配置参数
 ``` json
 {
-  eventName: 'ti-practice-ielts’,
-  durationType: 'min', 
+  "eventName": "ti-practice-ielts",
+  "durationType": "min", 
 }
 ```
 
