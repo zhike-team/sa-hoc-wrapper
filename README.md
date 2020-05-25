@@ -48,6 +48,7 @@ class extends Component{
   // 神策打点，时间名字，不传默认为 'track_timer_event'
   eventName: 'ti-practice-ielts’
 }
+
 // 绑定在类原型上
 getTrackTimerProperties(){} 返回打点属性信息
 ```
