@@ -31,7 +31,7 @@ class extends Component{
  # 编译打包 
  npm run build
 
- #  修改版本
+ # 更新版本号
  npm version major|minor|patch
  
  # 发布
