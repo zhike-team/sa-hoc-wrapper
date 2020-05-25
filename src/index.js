@@ -11,8 +11,8 @@ if (typeof sa !== 'undefined') {
   if (!sa.trackTimerEnd) {
     sa.trackTimerEnd = function trackTimerEnd(event, properties) {
       const now = Date.now();
-      // 上传时间的单位修改为分钟
-      const duration = ((now - sa.trackTimerStartAt) / (1000 * 60)).toFixed(2);
+      // 上传时间设置为秒
+      const duration = ((now - sa.trackTimerStartAt) / 1000).toFixed(2);
       sa.track(event, { duration, ...properties });
     };
   }

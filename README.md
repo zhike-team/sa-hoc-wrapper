@@ -29,7 +29,7 @@ class extends Component{
  npm start 
 
  # 拷贝sa参数文件
- cp sa.js /dist
+ cp sa.js dist
 
  # 编译打包 
  npm run build
