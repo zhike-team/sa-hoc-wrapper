@@ -28,9 +28,6 @@ class extends Component{
  # 开启服务
  npm start 
 
- # 拷贝sa参数文件
- cp sa.js dist
-
  # 编译打包 
  npm run build
 
@@ -45,11 +42,17 @@ class extends Component{
 ``` js
 // saWrapper 配置参数 
 {
-  // 神策打点，时间名字，不传默认为 'track_timer_event'
-  eventName: 'ti-practice-ielts’
+  eventName: 'ti-practice-ielts’,
+  durationType: 'min', // 值可为 ms s min hour
 }
 
-// 绑定在类原型上
-getTrackTimerProperties(){} 返回打点属性信息
+// 绑定在类原型上 
+getTrackTimerProperties(){
+  return {
+    name: '1',
+    age: '18',
+  }
+} 
 ```
+
 默认会将当前包裹组件的 componentDidmount 和 compoentwillunmount 之间的时间 duration 自动上传

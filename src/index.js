@@ -1,26 +1,34 @@
 const TRACK_TIMER_EVENT = 'track_timer_event';
 
-if (typeof sa !== 'undefined') {
-  if (!sa.trackTimerStart) {
-    sa.trackTimerStart = function trackTimerStart() {
-      const now = Date.now();
-      sa.trackTimerStartAt = now;
-    };
-  }
-
-  if (!sa.trackTimerEnd) {
-    sa.trackTimerEnd = function trackTimerEnd(event, properties) {
-      const now = Date.now();
-      // 上传时间设置为秒
-      const duration = ((now - sa.trackTimerStartAt) / 1000).toFixed(2);
-      sa.track(event, { duration, ...properties });
-    };
-  }
-}
+const durationMap = new Map([
+  ['ms', 1],
+  ['s', 1000],
+  ['min', 1000 * 60],
+  ['hour', 1000 * 60 * 60],
+])
 
 // 增加神策时间统计支持
 export const saWrapper = (config = {}) => targetClass => {
   const eventName = config.eventName || TRACK_TIMER_EVENT;
+  const durationType = config.durationType || 'min'
+  if (typeof sa !== 'undefined') {
+    if (!sa.trackTimerStart) {
+      sa.trackTimerStart = function trackTimerStart() {
+        const now = Date.now();
+        sa.trackTimerStartAt = now;
+      };
+    }
+  
+    if (!sa.trackTimerEnd) {
+      sa.trackTimerEnd = function trackTimerEnd(event, properties) {
+        const now = Date.now();
+        // 上传时间设置为秒
+        const duration = ((now - sa.trackTimerStartAt) / durationMap.get(durationType)).toFixed(2);
+        sa.track(event, { duration, ...properties });
+      };
+    }
+  }
+
   const unloadHandler = function (event) {
     if (sa && sa.trackTimerEnd) {
       let properties;

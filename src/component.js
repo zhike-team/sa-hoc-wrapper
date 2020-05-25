@@ -2,7 +2,8 @@ import React from 'react';
 import { saWrapper } from './index'
 
 @saWrapper({
-  eventName: 'ti_practice_ielts'
+  eventName: 'ti_practice_ielts',
+  durationType: 'min'
 })
 class MyComponent1 extends React.Component {
   constructor(props){
@@ -34,7 +35,8 @@ class MyComponent1 extends React.Component {
 }
 
 @saWrapper({
-  eventName: 'ti_practice_ielts'
+  eventName: 'ti_practice_ielts',
+  durationType: 'min'
 })
 class MyComponent2 extends React.Component {
   constructor(props){
