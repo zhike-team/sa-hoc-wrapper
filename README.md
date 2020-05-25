@@ -39,14 +39,16 @@ class extends Component{
 ```
 
 ## API
-``` js
-// saWrapper 配置参数 
+配置参数
+``` json
 {
   eventName: 'ti-practice-ielts’,
-  durationType: 'min', // 值可为 ms s min hour
+  durationType: 'min', 
 }
+```
 
-// 绑定在类原型上 
+```js
+// 返回神策打点属性
 getTrackTimerProperties(){
   return {
     name: '1',
