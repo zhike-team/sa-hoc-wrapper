@@ -1,5 +1,5 @@
 import React from 'react';
-import { saWrapper } from './index'
+import { saWrapper } from '../lib/saWrapper'
 
 @saWrapper({
   eventName: 'ti_practice_ielts',
