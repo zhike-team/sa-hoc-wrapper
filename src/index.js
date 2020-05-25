@@ -10,7 +10,7 @@ const durationMap = new Map([
 // 增加神策时间统计支持
 export const saWrapper = (config = {}) => targetClass => {
   const eventName = config.eventName || TRACK_TIMER_EVENT;
-  const durationType = config.durationType || 'min'
+  const durationType = config.durationType || 's'
   if (typeof sa !== 'undefined') {
     if (!sa.trackTimerStart) {
       sa.trackTimerStart = function trackTimerStart() {
