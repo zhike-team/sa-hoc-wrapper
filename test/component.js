@@ -1,9 +1,9 @@
 import React from 'react';
-import { saWrapper } from '../lib/saWrapper'
+import { saWrapper } from '../lib/saWrapper';
 
 @saWrapper({
   eventName: 'ti_practice_ielts',
-  durationType: 'min'
+  durationType: 's'
 })
 class MyComponent1 extends React.Component {
   constructor(props){
@@ -36,7 +36,7 @@ class MyComponent1 extends React.Component {
 
 @saWrapper({
   eventName: 'ti_practice_ielts',
-  durationType: 'min'
+  durationType: 's'
 })
 class MyComponent2 extends React.Component {
   constructor(props){
@@ -59,7 +59,7 @@ class MyComponent2 extends React.Component {
 
   getTrackTimerProperties() {
     // const { subjectIds } = this.state;
-    console.log(global)
+    // console.log(global)
     return {
       subjectIds: '5,6,7'
     }
